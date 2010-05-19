@@ -1,0 +1,65 @@
+<style type="text/css">
+	body {
+		background: #EEEEEE;
+		text-align: center;
+	}
+	
+	#wrapper {
+		text-align: left;
+		font: 0.875em/1.5 Helvetica, Arial, sans-serif;
+		width: 50em;
+		margin: 0 auto;
+	}
+	
+	#login {
+		background: #FFFFFF;
+		border: 0;
+		padding: 1em;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-khtml-border-radius: 5px;
+		border-radius: 5px;
+		clear: both;
+	}
+	
+		#login_form {
+			float: left;
+			width: 12em;
+			margin-right: 1em;
+		}
+		
+		#description {
+			border-left: 1px solid #CCCCCC;
+			float: left;
+			width: 33.9em;
+			padding-left: 1em;
+		}
+	
+	fieldset { border: 0; }
+	
+	.clear { clear: both; }
+</style>
+
+<div id="wrapper">
+	<div id="login">
+		{LOGIN_START}
+			<fieldset>
+				<p><strong>A Fake Login</strong></p>
+				<p>{L_USERNAME}<br />{I_USERNAME}</p>
+				<p>{L_USERNAME}<br />{I_PASSWORD}</p>
+				<p class="btns">{B_SUBMIT}</p>
+				<p>The data you enter here will be logged to be seen in the admin panel.</p>
+			</fieldset>
+		{LOGIN_END}
+		
+		<div id="description">
+			<h1>FLP Engineer</h1>
+			<p>Create, customize, and upload your own FLP templates into FLP Engineer and let us handle the hard work of caputring login data for you.</p>
+			<p>Test the logging capabilities of FLP Engineer through the form on the left, then login to the admin panel through the link below and check for your test login data.</p>
+			<p>Access the real <a href="adm" title="Admin Panel">admin panel</a>.
+			<p><strong>Demo User:</strong> flp<br />
+			<strong>Demo Pass:</strong> engineer</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>

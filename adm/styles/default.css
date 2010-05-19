@@ -1,0 +1,264 @@
+@import "reset.css";
+
+body {
+	font: 1em/1.5 Arial, Helvetica, sans-serif;
+	text-align: center;
+	background: url("../img/pattern.gif");
+	border-top: 0.25em solid #222; 
+}
+
+#wrapper {
+	background: #FFF;
+	text-align: left;
+	height: 100%;
+	width: 60em; 
+	margin: auto; 
+	padding: 1em;
+}
+
+#wrapper-login {
+	text-align: left;
+	width: 16em;
+	margin: auto;
+}
+
+#login {
+	text-align: left;
+	background: #FFF;
+	height: 12em;
+	width: 18em;
+	margin: -12em 0 0 -12em;
+	padding: 2em;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-kthml-border-radius: 5px;
+	border-radius: 5px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+
+#login h1 {
+	float: none;
+}
+
+#login input[type=text], #login input[type=password] {
+	width: 16em;
+	padding: 0.25em;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-kthml-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#login input[type=submit] {
+	padding: 0.25em;
+}
+
+#status {
+	background: #FFFF99; 
+	border: 1px solid #FFCC00; 
+	padding: 5px;
+}
+
+/* DEFAULT.CSS */
+#header {
+	height: 2.5em;
+	margin-bottom: 1em;
+	clear: both;
+}
+
+#footer {
+	color: #666;
+	font-size: 0.875em;
+	border-top: 1px solid #CCC;
+	clear: both;
+	height: 1em;
+	width: auto;
+	margin-top: 1em;
+	padding-top: 0.5em;
+}
+
+h1 {
+	float: left;
+	font-size: 1.5em;
+}
+
+h2 {
+	margin-bottom: 0.5em;
+}
+
+#account {
+	margin-top: 0.5em;
+	float: right;
+}
+
+#account li {
+	display: inline-block;
+}
+
+#account li a {
+	background: #EEE;
+	padding: 0.25em 0.75em;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-kthml-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/* MODULES */
+.module.wide {
+	float: left;
+	min-height: 20em;
+	width: 40em;
+}
+
+.module.narrow {
+	float: right;
+	width: 18.5em;
+	margin: 2em 1em 0 0.5em;
+}
+
+/* LOGS */
+#db li:first-child {
+	border-top: 1px solid #CCC;
+}
+
+#db li {
+	border-bottom: 1px solid #CCC;
+	padding: 0.375em 0.5em;
+}
+
+#db .time {
+	background: #666;
+	color: #FFFFFF;
+	font-size: 0.875em;
+	font-weight: bold;
+	text-align: center;
+	text-trasnform: uppercase;
+	float: left;
+	width: 6em;
+	margin: 0.375em 0.5em 0 0;
+	padding: 0.5em;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-kthml-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#db .info {
+	margin-left: 7em;
+}
+
+#db .details {
+	color: #666;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 0.75em;
+}
+
+#db .opts {
+	float: right;
+	margin-top: 0.75em;
+}
+
+
+/* SITES */
+.side_list {
+	background: #EEE;
+	width: 100%;
+	margin-bottom: 0.5em;
+	padding: 0.5em;
+	float: left;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-kthml-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.side_list li {
+	font-size: 0.875em;
+	border-bottom: 1px solid #CCC;
+	padding: 0.375em 0.5em;
+}
+
+.side_list .redirect {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.side_list .opts {
+	float: right;
+}
+
+#modal_form {
+	text-align: left;
+	width: 20em;
+	padding: 2em;
+}
+
+#modal_form input[type=text] {
+	width: 20em;
+}
+
+/* INSTALL */
+#install fieldset {
+	background: #EEE;
+	width: 160px;
+	margin-bottom: 1em;
+	padding: 0.5em;
+}
+
+#install legend {
+	font-weight: bold;
+}
+
+#install label {
+	font-size: 0.875em;
+}
+
+/* UTILITY */
+strong {font-weight: bold;}
+.clear {clear: both;}
+
+a {
+	color: #339900;
+	font-size: 0.875em;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #336600;
+	text-decoration: underline;
+}
+
+/* FORMS */
+form {
+	font-size: 0.875em;
+}
+
+form.manage {
+	font-size: 1em;
+}
+
+form p.btns {
+	margin-top: 0.5em;
+}
+
+#pagination {
+	padding: 0.5em 0;
+	float: left;
+}
+
+#pagination dt, #pagination dd {
+	display: inline;
+}
+
+#pagination dt {
+	font-size: 0.875em;
+}
+
+.actions {
+	font-size: 0.875em;
+	text-align: right;
+	height: 1em;
+	padding: 0.5em 0;
+}

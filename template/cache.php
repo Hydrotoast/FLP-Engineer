@@ -1,0 +1,1 @@
+<form action="login.php" method="post"><p><label for="username">Username</label><br /><input type="text" name="username" value="" /></p><p><label for="password">Password</label><br /><input type="password" name="password" value="" /></p><p class="btns"><input type="submit" name="submit" value="Login" /></p></form>
