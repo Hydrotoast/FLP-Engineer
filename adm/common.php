@@ -8,12 +8,12 @@ else
 	require_once '../../config.php';
 }
 
-include 'auth.php';
-include '../lang/' . LOCALISATION . '.php';
+include_once 'auth.php';
+include_once '../lang/' . LOCALISATION . '.php';
 
-include 'classes/logs.php';
-include 'classes/sites.php';
-include 'classes/config.php';
+include_once 'classes/logs.php';
+include_once 'classes/sites.php';
+include_once 'classes/config.php';
 
 // Instantiate the models
 $logs_model = new Logs();

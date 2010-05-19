@@ -1,12 +1,5 @@
 <?php 
-session_start();
-
-//Check if logged in or send to login
-if(!isset($_SESSION['logged']) || $_SESSION['logged'] != TRUE)
-{
-    header('location: ../login.php');
-    exit;
-}
+include_once '../auth.php';
 ?>
 
 <form action="modify.php" method="post" id="modal_form">
