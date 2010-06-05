@@ -20,6 +20,29 @@ class Admins
 		$this->table = DB_EXT . '_admins';
 	}
 	
+	function check_login($username, $password)
+	{
+		//Escape the strings to prevent SQL injections
+		$qpassword = base64_encode($password . $this->salt);
+		
+		$query = 'SELECT * FROM ' . $this->table . ' WHERE admin_user = ? AND admin_pass = ? LIMIT 1'; //Construct query
+		$stmt = $this->db->prepare($query); //Prepare the query
+		
+		if($stmt)
+		{
+			$stmt->bind_param('ss', $username, $qpassword); //Bind variables into strings where '?' is.
+			$stmt->execute(); //Rebuild string with bound variables
+			$result = $stmt->fetch(); //Check for query success
+			
+			$stmt->free_result();
+			$stmt->close(); //End SQL queries
+		}
+		
+		$this->db->close();
+		
+		return ($result) ? true : false;
+	}
+	
 	function register($username, $password)
 	{
 		$check_login = $this->check_username($username);
@@ -36,23 +59,8 @@ class Admins
 	
 	function login($username, $password, $token)
 	{
-		//Escape the strings to prevent SQL injections
-		$qpassword = base64_encode($password . $this->salt);
-		
-		$query = 'SELECT * FROM ' . $this->table . ' WHERE admin_user = ? AND admin_pass = ? LIMIT 1'; //Construct query
-		$stmt = $this->db->prepare($query); //Prepare the query
-		
-		if($stmt)
-		{
-			$stmt->bind_param('ss', $username, $qpassword); //Bind variables into strings where '?' is.
-			$stmt->execute(); //Rebuild string with bound variables
-			$result = $stmt->fetch(); //Check for query success
-			
-			$stmt->close(); //End SQL queries
-		}
-		
-		$this->db->close();
-		
+		$result = $this->check_login($username, $password);
+				
 		//Results of login
 		if($result && strlen($token) === 40 && $token == $_SESSION['token'])
 		{
