@@ -6,22 +6,25 @@ include '../lang/' . LOCALISATION . '.php';
 
 $admins_model = new Admins(); //Instantiate class
 
+// Check if the user wants to logout
 if(isset($_GET['action']) && $_GET['action'] == 'logout')
 {
 	$admins_model->logout();
 }
 
-if($_POST && !empty($_POST['username']) && !empty($_POST['password']))
+// Check for a validusername and password
+if($_POST && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['token']) && !empty($_SESSION['token']))
 {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
+	$token = $_POST['token'];
 	
 	//Attempt to login user
-	$result = $admins_model->login($username, $password);
+	$result = $admins_model->login($username, $password, $token);
 	
 	//Results of login attempt
 	if($result)
-	{
+	{	
 		header('location: index.php'); //Redirect to main page
 	}
 	else
@@ -33,8 +36,13 @@ elseif(isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE)
 {
 	header('location: index.php'); //Redirect to main page
 }
+else
+{
+	$token = sha1(uniqid() . session_id());
+	$_SESSION['token'] = $token;
+}
 
-ob_start("ob_gzhandler");
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
@@ -67,6 +75,7 @@ ob_start("ob_gzhandler");
 					<input type="password" name="password" value="" />
 				</p>
 				
+				<input type="hidden" name="token" value="<?php echo $token; ?>" />
 				<p class="btns"><input type="submit" name="submit" value="Login" /></p>
 			</fieldset>
 		</form>

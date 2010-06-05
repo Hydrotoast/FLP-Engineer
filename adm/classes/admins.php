@@ -34,16 +34,32 @@ class Admins
 		}
 	}
 	
-	function login($username, $password)
+	function login($username, $password, $token)
 	{
-		$check_login = $this->check_login($username, $password); //Check login details
+		//Escape the strings to prevent SQL injections
+		$qpassword = base64_encode($password . $this->salt);
+		
+		$query = 'SELECT * FROM ' . $this->table . ' WHERE admin_user = ? AND admin_pass = ? LIMIT 1'; //Construct query
+		$stmt = $this->db->prepare($query); //Prepare the query
+		
+		if($stmt)
+		{
+			$stmt->bind_param('ss', $username, $qpassword); //Bind variables into strings where '?' is.
+			$stmt->execute(); //Rebuild string with bound variables
+			$result = $stmt->fetch(); //Check for query success
+			
+			$stmt->close(); //End SQL queries
+		}
+		
+		$this->db->close();
 		
 		//Results of login
-		if($check_login)
+		if($result && strlen($token) === 40 && $token == $_SESSION['token'])
 		{
 			//Set our session and initialize the trending security
 			$_SESSION['logged'] = TRUE;
 			$_SESSION['fingerprint'] = sha1($_SERVER['HTTP_USER_AGENT'] . session_id() . $_SERVER['REMOTE_ADDR']);
+			unset($_SESSION['token']);
 			
 			return true;
 		} 
@@ -95,28 +111,6 @@ class Admins
 		
 		return (($result->num_rows > 0) ? true : false);
 		$result->free_result();
-		$this->db->close();
-	}
-	
-	function check_login($username, $password)
-	{	
-		//Escape the strings to prevent SQL injections
-		$qpassword = base64_encode($password . $this->salt);
-		
-		$query = 'SELECT * FROM ' . $this->table . ' WHERE admin_user = ? AND admin_pass = ? LIMIT 1'; //Construct query
-		$stmt = $this->db->prepare($query); //Prepare the query
-		
-		if($stmt)
-		{
-			$stmt->bind_param('ss', $username, $qpassword); //Bind variables into strings where '?' is.
-			$stmt->execute(); //Rebuild string with bound variables
-			$result = $stmt->fetch(); //Check for query success
-			
-			return ($result) ? true : false;
-			$result->free_result();
-			$stmt->close(); //End SQL queries
-		}
-		
 		$this->db->close();
 	}
 	
