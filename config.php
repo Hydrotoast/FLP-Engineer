@@ -7,5 +7,5 @@ DEFINE('DB_EXT', 'flp');
 
 DEFINE('LOCALISATION', 'en');
 
-DEFINE('INSTALLED', 'true');
+DEFINE('INSTALLED', 'false');
 ?>
