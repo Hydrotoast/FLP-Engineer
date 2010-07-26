@@ -34,11 +34,8 @@ class Admins
 			$stmt->execute(); //Rebuild string with bound variables
 			$result = $stmt->fetch(); //Check for query success
 			
-			$stmt->free_result();
 			$stmt->close(); //End SQL queries
 		}
-		
-		$this->db->close();
 		
 		return ($result) ? true : false;
 	}
@@ -118,8 +115,6 @@ class Admins
 		$result = $this->db->query($query);
 		
 		return (($result->num_rows > 0) ? true : false);
-		$result->free_result();
-		$this->db->close();
 	}
 	
 	function add_user($username, $password)
@@ -136,7 +131,10 @@ class Admins
 			$stmt->execute(); //Rebuild string with bound variables
 			$stmt->close(); //End SQL queries
 		}
-		
+	}
+	
+	function __destruct()
+	{
 		$this->db->close();
 	}
 }

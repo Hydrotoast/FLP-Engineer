@@ -25,7 +25,7 @@ body {
 #login {
 	text-align: left;
 	background: #FFF;
-	height: 12em;
+	height: auto;
 	width: 18em;
 	margin: -12em 0 0 -12em;
 	padding: 2em;
@@ -230,6 +230,20 @@ a:hover {
 	text-decoration: underline;
 }
 
+a.btn {
+	background: #F0F0F0;
+	border: 1px solid #E0E0E0;
+	margin: 2px;
+	padding: 4px 6px;
+}
+
+a.btn:hover {
+	background-color: #339900;
+	border-color: #336600;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
 /* FORMS */
 form {
 	font-size: 0.875em;
@@ -257,6 +271,13 @@ form p.btns {
 }
 
 .actions {
+	font-size: 0.875em;
+	text-align: right;
+	height: 1em;
+	padding: 0.5em 0;
+}
+
+.marks {
 	font-size: 0.875em;
 	text-align: right;
 	height: 1em;

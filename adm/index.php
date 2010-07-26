@@ -2,9 +2,9 @@
 include 'common.php';
 
 // Logs
-$page = (isset($_GET['page']) && is_numeric($_GET['page'] && $_GET['page'] > 0) ? $_GET['page'] : 1);
+$page = ((isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0) ? $_GET['page'] : 1);
 $logs = $logs_model->get_logs($page);
-$num_logs = $logs_model->get_logs();
+$num_logs = $logs_model->get_total_pages();
 
 // Sites
 $sites = $sites_model->get_sites();
@@ -74,9 +74,13 @@ ob_start("ob_gzhandler");
 			
 			<dl id="pagination">
 				<dt><strong><?php echo $lang['PAGE']; ?></strong>: <?php echo "$page of $num_logs"; ?></dt>
-				<dd><?php if($page > 1) echo '<a href="index.php?page=' . $page-- . '" title="' . $lang['PREVIOUS'] . '">' . $lang['PREVIOUS'] . '</a>'; ?></dd>
-				<dd><?php if($page - $num_logs != 0) echo '<a href="index.php?page=' . $page++ . '" title="' . $lang['NEXT'] . '">' . $lang['NEXT'] . '</a>'; ?></dd>
+				<dd><?php if($page > 1) echo '<a href="index.php?page=' . ($page - 1) . '" title="' . $lang['PREVIOUS'] . '" class="btn">' . $lang['PREVIOUS'] . '</a>'; ?></dd>
+				<dd><?php if($num_logs - $page > 0) echo '<a href="index.php?page=' . ($page + 1) . '" title="' . $lang['NEXT'] . '" class="btn">' . $lang['NEXT'] . '</a>'; ?></dd>
 			</dl>
+			
+			<div class="marks">
+				<a href="#" id="mark_all_btn" class="btn" title="<?php echo $lang['MARK_ALL']; ?>"><?php echo $lang['MARK_ALL']; ?></a>
+			</div>
 			
 			<div class="actions">
 				<select name="action">

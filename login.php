@@ -93,7 +93,7 @@ function check_user($db, $username, $password)
 function validated(&$data)
 {
 	$data = filter_var($data, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
-	return (!sizeof($data) || $data == '' || strlen($data) < 2) ? false : true;
+	return (!sizeof($data) || $data == '' || strlen($data) < 2 || strlen($data) > 45) ? false : true;
 }
 
 function redirect($url='index.php')

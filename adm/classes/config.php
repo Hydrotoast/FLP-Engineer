@@ -13,10 +13,8 @@ class Config
 	{
 		$query = 'SELECT config_value FROM ' . $this->table . ' WHERE config_key=\'active_flp\' LIMIT 1';
 		$result = $this->db->query($query);
-		
+
 		return $result;
-		$result->free_result();
-		$this->db->close();
 	}
 	
 	function activate_flp($file)
@@ -29,5 +27,10 @@ class Config
 			$this->db->multi_query($query);
 			$this->db->close();
 		}
+	}
+	
+	function __destruct()
+	{
+		$this->db->close();
 	}
 }

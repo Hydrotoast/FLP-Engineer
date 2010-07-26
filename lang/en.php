@@ -8,6 +8,7 @@ $lang = array(
 
 	'LOGS'			=> 'logs',
 	'MARKED_LOGS'	=> 'Marked logs',
+	'MARK_ALL'		=> 'Mark all',
 	'STATISTICS'	=> 'Statistics',
 	'NO_LOGINS' 	=> 'No logins have been recorded.',
 
