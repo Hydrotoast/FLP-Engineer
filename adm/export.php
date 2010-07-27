@@ -8,6 +8,10 @@ if(!in_array($type, $types)) die($lang['INVALID_TYPE']);
 
 $logs = $logs_model->get_logs();
 
+// Prevent caching
+header('Cache-Control: no-cache, must-revalidate');
+header("Expires: Mon, 26 Jul 1997 05:00:00 PST");
+
 switch($type)
 {
 	case 'plain':
